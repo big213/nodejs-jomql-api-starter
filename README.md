@@ -27,9 +27,11 @@ npm run serve
 ## Basic Usage
 
 **Sync Database**
+
 `POST http://localhost:5001/project-name/us-central1/api/mysql/sync`
 
 **Register User**
+
 `POST http://localhost:5001/project-name/us-central1/api/jomql`
 
 ```json
@@ -51,6 +53,7 @@ npm run serve
 ```
 
 **Login User**
+
 `POST http://localhost:5001/project-name/us-central1/api/jomql`
 
 ```json
