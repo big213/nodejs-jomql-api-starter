@@ -30,6 +30,7 @@ jomql.initialize(app, schema, {
   allowedOrigins: ["http://localhost:3000"],
   lookupValue: true,
   jomqlPath: "/jomql",
+  allowSync: !!isDev,
 });
 
 export const api = functions.https.onRequest(app);

@@ -10,7 +10,7 @@ Set up your Firebase project. Make sure to enable Functions. You will also have 
 firebase init
 ```
 
-Set up the environment. Example env file in `env.json.example`. Only works with MySQL at the moment.
+Set up the environment. Example env file in `env.json.example`. Only works with MySQL at the moment. Exclude `mysql.socketpath` from your env file if not connecting via socket.
 
 Install dependencies
 
@@ -28,7 +28,9 @@ npm run serve
 
 **Sync Database**
 
-`POST http://localhost:5001/project-name/us-central1/api/mysql/sync`
+```bash
+cd functions && npm run db:sync
+```
 
 **Register User**
 
