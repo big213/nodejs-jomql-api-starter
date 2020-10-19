@@ -1,9 +1,14 @@
 import { User } from "../services";
-import * as typeDefHelper from "../../helpers/tier0/typeDef";
+import {
+  generateIdField,
+  generateCreatedAtField,
+  generateUpdatedAtField,
+  generateCreatedByField,
+} from "../../helpers/tier0/typeDef";
 import { dataTypes, sequelizeDataTypes } from "jomql";
 
 export default {
-  ...typeDefHelper.generateIdField(),
+  ...generateIdField(),
   name: {
     type: dataTypes.STRING,
     allowNull: false,
@@ -14,7 +19,7 @@ export default {
     addable: true,
     updateable: true,
   },
-  ...typeDefHelper.generateCreatedAtField(),
-  ...typeDefHelper.generateUpdatedAtField(),
-  ...typeDefHelper.generateCreatedByField(User),
+  ...generateCreatedAtField(),
+  ...generateUpdatedAtField(),
+  ...generateCreatedByField(User),
 };

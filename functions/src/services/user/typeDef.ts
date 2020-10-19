@@ -2,11 +2,17 @@ import * as bcrypt from "bcryptjs";
 
 import errorHelper from "../../helpers/tier0/error";
 import { User, UserRoleEnum } from "../services";
-import * as typeDefHelper from "../../helpers/tier0/typeDef";
+import {
+  generateIdField,
+  generateCreatedAtField,
+  generateUpdatedAtField,
+  generateCreatedByField,
+  generateEnumField,
+} from "../../helpers/tier0/typeDef";
 import { dataTypes, sequelizeDataTypes } from "jomql";
 
 export default {
-  ...typeDefHelper.generateIdField(),
+  ...generateIdField(),
   email: {
     type: dataTypes.STRING,
     mysqlOptions: {
@@ -43,10 +49,10 @@ export default {
     addable: true,
     updateable: true,
   },
-  ...typeDefHelper.generateCreatedAtField(),
-  ...typeDefHelper.generateUpdatedAtField(),
-  ...typeDefHelper.generateCreatedByField(User),
-  ...typeDefHelper.generateEnumField(
+  ...generateCreatedAtField(),
+  ...generateUpdatedAtField(),
+  ...generateCreatedByField(User),
+  ...generateEnumField(
     "role",
     UserRoleEnum,
     {},

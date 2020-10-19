@@ -1,6 +1,6 @@
-import { User, Auth } from '../services';
-import * as rootResolverHelper from '../../helpers/tier2/rootResolver'
-import { typeDefs } from '../typeDefs';
+import { User, Auth } from "../services";
+import { generateRootResolvers } from "../../helpers/tier2/rootResolver";
+import { typeDefs } from "../typeDefs";
 
 const resolvers = {
   query: {
@@ -8,11 +8,16 @@ const resolvers = {
       method: "get",
       route: "/currentUser",
       type: User.__typename,
-      resolver: (req) => User.getRecord(req, {
-        ...req.params,
-        ...req.jql?.__args,
-        id: req.user?.id
-      }, req.jql)
+      resolver: (req) =>
+        User.getRecord(
+          req,
+          {
+            ...req.params,
+            ...req.jql?.__args,
+            id: req.user?.id,
+          },
+          req.jql
+        ),
     },
   },
   mutation: {
@@ -20,17 +25,22 @@ const resolvers = {
       method: "post",
       route: "/registerUser",
       type: Auth.__typename,
-      resolver: (req) => User.registerUser(req, {
-        ...req.params,
-        ...req.jql?.__args,
-      }, req.jql)
+      resolver: (req) =>
+        User.registerUser(
+          req,
+          {
+            ...req.params,
+            ...req.jql?.__args,
+          },
+          req.jql
+        ),
     },
   },
-  subscription: {}
+  subscription: {},
 };
 
-rootResolverHelper.generateRootResolvers(resolvers, User, typeDefs, {
-  methods: ["get", "getMultiple", "delete", "update"]
+generateRootResolvers(resolvers, User, typeDefs, {
+  methods: ["get", "getMultiple", "delete", "update"],
 });
 
 export default resolvers;

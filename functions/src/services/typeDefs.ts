@@ -19,5 +19,6 @@ export const typeDefs = {
 
   auth,
   paginatorInfo: generators.generatePaginatorInfoTypeDef(),
+
   userRoleEnum: generators.generateEnumTypeDef(userRole),
 };
