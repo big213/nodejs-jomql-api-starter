@@ -8,7 +8,7 @@ import company from "./company/typeDef";
 
 import auth from "./auth/typeDef";
 
-import { userRole } from "./enums";
+import { userRoleEnum } from "./enums";
 
 export const typeDefs = {
   user,
@@ -20,5 +20,5 @@ export const typeDefs = {
   auth,
   paginatorInfo: generators.generatePaginatorInfoTypeDef(),
 
-  userRoleEnum: generators.generateEnumTypeDef(userRole),
+  userRole: generators.generateEnumTypeDef(userRoleEnum),
 };

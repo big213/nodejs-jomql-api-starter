@@ -7,7 +7,7 @@ import { mysqlHelper, resolverHelper, subscriptionHelper } from "jomql";
 
 import errorHelper from "../../helpers/tier0/error";
 
-import { userRole } from "../enums";
+import { userRoleEnum } from "../enums";
 
 import {
   generateAlwaysAllowedGuard,
@@ -122,7 +122,10 @@ export class User extends Service {
     }
 
     //check if target user is more senior admin
-    if (userRole[results[0].role] === "ADMIN" && results[0].id < req.user.id) {
+    if (
+      userRoleEnum[results[0].role] === "ADMIN" &&
+      results[0].id < req.user.id
+    ) {
       throw errorHelper.generateError(
         "Cannot update more senior admin user",
         401

@@ -1,14 +1,14 @@
-import { Service } from '../service';
-import { dataTypes } from 'jomql';
+import { Service } from "../service";
+import { dataTypes } from "jomql";
 
 export function generateEnumService(enumName: string, currentEnum: object) {
   return class extends Service {
-    static __typename = enumName + 'Enum';
+    static __typename = enumName;
     static presets = {
       default: {
         id: null,
         name: null,
-      }
+      },
     };
 
     static enum = currentEnum;
@@ -16,7 +16,7 @@ export function generateEnumService(enumName: string, currentEnum: object) {
     static getTypeDef = Service.getTypeDef;
 
     static getRecord = Service.getRecord;
-  }
+  };
 }
 
 export function generateEnumTypeDef(currentEnum: object) {
@@ -25,13 +25,13 @@ export function generateEnumTypeDef(currentEnum: object) {
       type: dataTypes.ID,
       resolver: async (typename, req, currentObject, query, args) => {
         return args.id;
-      }
+      },
     },
     name: {
       type: dataTypes.STRING,
       resolver: async (typename, req, currentObject, query, args) => {
         return currentEnum[args.id];
-      }
-    }
-  }
-};
+      },
+    },
+  };
+}

@@ -1,7 +1,7 @@
 import * as bcrypt from "bcryptjs";
 
 import errorHelper from "../../helpers/tier0/error";
-import { User, UserRoleEnum } from "../services";
+import { User, UserRole } from "../services";
 import {
   generateIdField,
   generateCreatedAtField,
@@ -54,8 +54,8 @@ export default {
   ...generateCreatedByField(User),
   ...generateEnumField(
     "role",
-    UserRoleEnum,
+    UserRole,
     {},
-    { defaultValue: UserRoleEnum.enum["NEW"] }
+    { defaultValue: UserRole.enum["NEW"] }
   ),
 };

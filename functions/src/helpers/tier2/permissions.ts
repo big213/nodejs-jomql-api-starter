@@ -1,5 +1,5 @@
 import { mysqlHelper } from "jomql";
-import { UserRoleEnum } from "../../services/services";
+import { UserRole } from "../../services/services";
 
 export function generateAlwaysAllowedGuard() {
   return () => true;
@@ -79,7 +79,7 @@ export function generateUserAdminGuard() {
 
       if (!userRecords[0]) return false;
 
-      return UserRoleEnum.enum[userRecords[0].role] === "ADMIN";
+      return UserRole.enum[userRecords[0].role] === "ADMIN";
     } catch (err) {
       return false;
     }
