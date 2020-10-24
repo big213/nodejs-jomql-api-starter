@@ -325,7 +325,7 @@ export abstract class Service {
         args
       );
 
-      return results;
+      return args.reverse ? results.reverse() : results;
     }
   }
 
